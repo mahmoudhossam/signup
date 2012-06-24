@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import loader, Context
 from rot13 import rot13
 
-def hello(request):
+def main(request):
     t = loader.get_template('page.html')
     if request.method == "GET":
         c = Context({})
@@ -12,3 +12,6 @@ def hello(request):
         result = rot13(user_input)
         c = Context({'content': result})
         return HttpResponse(t.render(c))
+
+def signup(request):
+    return HttpResponse('signup page')

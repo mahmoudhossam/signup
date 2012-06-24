@@ -8,6 +8,7 @@ import views
 urlpatterns = patterns('',
         url(r'^$', views.main),
         url(r'^signup$', views.signup),
+        url(r'^thanks$', views.thanks),
     # Examples:
     # url(r'^$', 'hw2.views.home', name='home'),
     # url(r'^hw2/', include('hw2.foo.urls')),

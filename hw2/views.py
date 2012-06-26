@@ -49,7 +49,7 @@ def signup(request):
             c['pw'] = "This password is inavlid."
             error_occurred = True
         else:
-            c[pw_val] = pw
+            c['pw_val'] = pw
         if verify != pw:
             c['verify'] = "These passwords do not match."
             error_occurred = True
@@ -58,7 +58,8 @@ def signup(request):
         if error_occurred:
             return HttpResponse(t.render(Context(c)))
         else:
-            return HttpResponseRedirect('/thanks')
+            return HttpResponseRedirect('/thanks?usr=%s' % usr)
 
 def thanks(request):
-    return HttpResponse('Thank you for signing up!')
+    user = request.GET['usr']
+    return HttpResponse('Welcome, %s!' % user)

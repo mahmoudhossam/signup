@@ -28,21 +28,33 @@ def signup(request):
         error_occurred = False
         c = {
                 'usr': '',
+                'usr_val': '',
                 'email': '',
+                'email_val': '',
                 'pw': '',
-                'verify': ''}
+                'pw_val': '',
+                'verify': '',
+                'verify_val': ''}
         if not valid_username(usr):
             c['usr'] = "This username is invalid."
             error_occurred = True
+        else:
+            c['usr_val'] = usr
         if not valid_email(email) and not email.strip() == "":
             c['email'] = "This email is invalid."
             error_occurred = True
+        else:
+            c['email_val'] = email
         if not valid_password(pw) :
             c['pw'] = "This password is inavlid."
             error_occurred = True
+        else:
+            c[pw_val] = pw
         if verify != pw:
             c['verify'] = "These passwords do not match."
             error_occurred = True
+        else:
+            c['verify_val'] = verify
         if error_occurred:
             return HttpResponse(t.render(Context(c)))
         else:
